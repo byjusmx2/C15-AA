@@ -44,27 +44,27 @@ function setup() {
   invisibleGround = createSprite(200,190,400,10);
   invisibleGround.visible = false;
   
-  // create Obstacles and Cloud groups
+  //crear grupos de obstáculos y nubes 
   obstaclesGroup = new Group();
   cloudsGroup = new Group();
   
-  console.log("Hello" + 5);
+  console.log("Hola" + 5);
   
   score = 0;
 }
 
 function draw() {
   background(180);
-  text("Score: "+ score, 500,50);
+  text("Puntuación: "+ score, 500,50);
   score = score + Math.round(frameCount/60);
   
   if(gameState === PLAY){
-    //move the ground
+    //mover el suelo
     ground.velocityX = -4;
     
   }
   else if(gameState === END){
-    //stop the ground
+    //detener el suelo
     ground.velocityX = 0;
   
   }
@@ -81,10 +81,10 @@ function draw() {
   
   trex.collide(invisibleGround);
   
-  //spawn the clouds
+  //aparecer las nubes
   spawnClouds();
   
-  //spawn obstacles on the ground
+  //aparecer los obstáculos en el suelo
   spawnObstacles();
   
   drawSprites();
@@ -96,7 +96,7 @@ function spawnObstacles(){
    obstacle.velocityX = -6;
 
    
-    // //generate random obstacles
+    //generar obstáculos al azar
     var rand = Math.round(random(1,6));
     switch(rand) {
       case 1: obstacle.addImage(obstacle1);
@@ -114,11 +114,11 @@ function spawnObstacles(){
       default: break;
     }
    
-    //assign scale and lifetime to the obstacle           
+    //asignar escala y lifetime al obstáculo           
     obstacle.scale = 0.5;
     obstacle.lifetime = 300;
    
-   //adding obstacles to the group
+   //agregar cada obstáculo al grupo
    obstaclesGroup.add(obstacle);
  }
 }
@@ -127,7 +127,7 @@ function spawnObstacles(){
 
 
 function spawnClouds() {
-  //write code here to spawn the clouds
+  //escribir aquí el código para aparecer las nubes 
   if (frameCount % 60 === 0) {
      cloud = createSprite(600,100,40,10);
     cloud.y = Math.round(random(10,60));
@@ -135,14 +135,14 @@ function spawnClouds() {
     cloud.scale = 0.5;
     cloud.velocityX = -3;
     
-     //assign lifetime to the variable
+     //asignar lifetime a la variable
     cloud.lifetime = 134;
     
-    //adjust the depth
+    //ajustar la profundidad
     cloud.depth = trex.depth;
     trex.depth = trex.depth + 1;
     
-    //adding cloud to the group
+    //agregar cada nube al grupo
    cloudsGroup.add(cloud);
   }
   
